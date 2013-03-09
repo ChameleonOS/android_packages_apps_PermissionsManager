@@ -48,11 +48,12 @@ import java.util.List;
 
 public class PermissionManagerActivity extends ExpandableListActivity
         implements CompoundButton.OnCheckedChangeListener,
-        AdapterView.OnItemLongClickListener {
+        AdapterView.OnItemLongClickListener, ExpandableListView.OnGroupClickListener {
     private Context mContext;
     private Handler mHandler = new Handler();
     private PackageManager mPm;
     private Switch mEnabled;
+    private int mLastExpandedGroup = 0;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +65,7 @@ public class PermissionManagerActivity extends ExpandableListActivity
         elv.setGroupIndicator(null);
         elv.setDividerHeight(0);
         elv.setOnItemLongClickListener(this);
+        elv.setOnGroupClickListener(this);
     }
 
     @Override
@@ -85,6 +87,32 @@ public class PermissionManagerActivity extends ExpandableListActivity
         if (!prefs.getBoolean("show_disclaimer", false)) {
             showDisclaimer();
         }
+    }
+
+    @Override
+    public void onGroupExpand(final int groupPosition) {
+        if (groupPosition != mLastExpandedGroup)
+            getExpandableListView().collapseGroup(mLastExpandedGroup);
+
+        super.onGroupExpand(groupPosition);
+        mLastExpandedGroup = groupPosition;
+    }
+
+    @Override
+    public boolean onGroupClick(ExpandableListView parent, View view, int groupPosition, long id) {
+        // Implement this method to scroll to the correct position as this doesn't
+        // happen automatically if we override onGroupExpand() as above
+        parent.smoothScrollToPosition(groupPosition);
+
+        // Need default behaviour here otherwise group does not get expanded/collapsed
+        // on click
+        if (parent.isGroupExpanded(groupPosition)) {
+            parent.collapseGroup(groupPosition);
+        } else {
+            parent.expandGroup(groupPosition);
+        }
+
+        return true;
     }
 
     private void showDisclaimer() {

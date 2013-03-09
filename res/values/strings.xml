@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The ChameleonOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+
+    <string name="app_name">Permissions Management</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_apps">Apps</string>
+    <string name="title_activity_manager">ManagerActivity</string>
+    <string name="pref_enable_management_title">Enable management</string>
+    <string name="pref_enable_management_summary_on">Permissions management is enabled</string>
+    <string name="pref_enable_management_summary_off">Permissions management is disabled</string>
+    <string name="tab_settings">Settings</string>
+    <string name="tab_apps">Apps</string>
+
+    <string name="switch_label">Managment</string>
+
+    <string name="dlg_perm_info_dismiss">Dismiss</string>
+
+    <string name="dlg_disclaimer_title">Adverse side effects</string>
+    <string name="dlg_disclaimer_message">Revoking permissions can cause applications to misbehave or crash.  We ask that you keep this in mind when revoking permissions.\n\nIf you revoke permissions and an application does not work as you think it should, please restore the revoked permissions and try again before assuming the the application is faulty or poorly designed.\n\nAll we ask is that you revoke responsibly.</string>
+    <string name="dlg_disclaimer_agree">I understand</string>
+    <string name="dlg_disclaimer_tldr">tl;dr</string>
+    <string name="dlg_tldr_message">If you revoke permissions, expect apps to misbehave and/or force close.\n\nPlease revoke responsibly.</string>
+    <string name="dlg_tldr_disagree">Quit</string>
+
+</resources>

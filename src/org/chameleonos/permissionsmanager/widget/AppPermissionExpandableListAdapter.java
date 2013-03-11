@@ -133,11 +133,12 @@ public class AppPermissionExpandableListAdapter extends BaseExpandableListAdapte
         TextView tv = (TextView) convertView.findViewById(R.id.app);
         AppPermsInfo api = mInstalledPackages.get(groupPosition);
         tv.setText(api.mAppName);
-        if (api.mIcon == null) ;
-        try {
-            api.mIcon = mPm.getApplicationIcon(mInstalledPackages.get(groupPosition).mPkgInfo.packageName);
-        } catch (NameNotFoundException e) {
-            api.mIcon = mPm.getDefaultActivityIcon();
+        if (api.mIcon == null) {
+            try {
+                api.mIcon = mPm.getApplicationIcon(mInstalledPackages.get(groupPosition).mPkgInfo.packageName);
+            } catch (NameNotFoundException e) {
+                api.mIcon = mPm.getDefaultActivityIcon();
+            }
         }
         tv.setCompoundDrawablesWithIntrinsicBounds(api.mIcon, null, null, null);
         tv.setCompoundDrawablePadding(10);
@@ -161,5 +162,4 @@ public class AppPermissionExpandableListAdapter extends BaseExpandableListAdapte
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
-
 }

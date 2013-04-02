@@ -31,7 +31,7 @@
     <string name="dlg_perm_info_dismiss">Dismiss</string>
 
     <string name="dlg_disclaimer_title">Adverse side effects</string>
-    <string name="dlg_disclaimer_message">Revoking permissions can cause applications to misbehave or crash.  We ask that you keep this in mind when revoking permissions.\n\nIf you revoke permissions and an application does not work as you think it should, please restore the revoked permissions and try again before assuming the the application is faulty or poorly designed.\n\nAll we ask is that you revoke responsibly.</string>
+    <string name="dlg_disclaimer_message">Revoking permissions can cause applications to misbehave or crash.  We ask that you keep this in mind when revoking permissions.\n\nIf you revoke permissions and an application does not work as you think it should, please restore the revoked permissions and try again before assuming that the application is faulty or poorly designed.\n\nAll we ask is that you revoke responsibly.</string>
     <string name="dlg_disclaimer_agree">I understand</string>
     <string name="dlg_disclaimer_tldr">tl;dr</string>
     <string name="dlg_tldr_message">If you revoke permissions, expect apps to misbehave and/or force close.\n\nPlease revoke responsibly.</string>

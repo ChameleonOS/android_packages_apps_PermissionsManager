@@ -18,6 +18,7 @@ package org.chameleonos.permissionsmanager.data;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.text.Collator;
 import java.util.List;
 
 import android.content.Context;
@@ -30,6 +31,7 @@ public class AppPermsInfo implements Comparable {
     public List<String> mRevokedPerms;
     public Drawable mIcon;
     public String mAppName;
+    private static Collator sCollator = Collator.getInstance();
 
     public AppPermsInfo(Context context, PackageInfo pi) {
         PackageManager pm = context.getPackageManager();
@@ -42,6 +44,6 @@ public class AppPermsInfo implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        return this.mAppName.toString().compareTo(((AppPermsInfo)o).mAppName);
+        return sCollator.compare(this.mAppName, ((AppPermsInfo)o).mAppName);
     }
 }

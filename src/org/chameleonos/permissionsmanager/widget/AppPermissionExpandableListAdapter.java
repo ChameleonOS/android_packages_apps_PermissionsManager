@@ -19,9 +19,12 @@ package org.chameleonos.permissionsmanager.widget;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 import org.chameleonos.permissionsmanager.R;
@@ -36,6 +39,7 @@ public class AppPermissionExpandableListAdapter extends BaseExpandableListAdapte
     private Context mContext;
     private List<AppPermsInfo> mInstalledPackages;
     private PackageManager mPm;
+    private Rect mIconBounds;
 
     /**
      *
@@ -47,6 +51,11 @@ public class AppPermissionExpandableListAdapter extends BaseExpandableListAdapte
         mContext = context;
         mInstalledPackages = installedPackages;
         mPm = context.getPackageManager();
+        DisplayMetrics dm = new DisplayMetrics();
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        wm.getDefaultDisplay().getMetrics(dm);
+        int size = (int) (48 * dm.density);
+        mIconBounds = new Rect(0, 0, size, size);
     }
 
     /* (non-Javadoc)
@@ -139,8 +148,9 @@ public class AppPermissionExpandableListAdapter extends BaseExpandableListAdapte
             } catch (NameNotFoundException e) {
                 api.mIcon = mPm.getDefaultActivityIcon();
             }
+            api.mIcon.setBounds(mIconBounds);
         }
-        tv.setCompoundDrawablesWithIntrinsicBounds(api.mIcon, null, null, null);
+        tv.setCompoundDrawables(api.mIcon, null, null, null);
         tv.setCompoundDrawablePadding(10);
 
         return convertView;

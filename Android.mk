@@ -12,6 +12,8 @@ LOCAL_CERTIFICATE := platform
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
+LOCAL_PRIVILEGED_MODULE := true
+
 include $(BUILD_PACKAGE)
 
 # Use the folloing include to make our test apk.
